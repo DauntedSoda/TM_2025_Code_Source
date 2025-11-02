@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://wmays7olscvk"]
+
+[ext_resource type="Texture2D" uid="uid://cmgj2xhvs8vhr" path="res://art/Medium_Rock.png" id="1_gq0tr"]
+
+[node name="Medium Rock" type="StaticBody2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gq0tr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-166, 196, 4, 216, 127, 185, 178, 92, 162, -11, 178, -131, 118, -202, -12, -197, -169, -94, -164, 31, -213, 125)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccw63yt5at471"]
+
+[ext_resource type="Texture2D" uid="uid://bho8unnnrqlnt" path="res://art/Triangular_Rock.png" id="1_85x8d"]
+
+[node name="Triangular_Rock" type="StaticBody2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_85x8d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-327, 349, -90, 422, 51, 330, 287, 359, 412, 327, 402, 149, 280, 4, 104, -20, -16, -142, -105, -402, -213, -436, -339, -374, -430, -108, -371, 44, -425, 195)

@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dic3jr1fbqxkg"]
+
+[ext_resource type="Script" uid="uid://b3has153kutqr" path="res://enemy.gd" id="1_6spjh"]
+[ext_resource type="Texture2D" uid="uid://bj0o74qs58sfv" path="res://art/enemy_losange.png" id="2_4gyqm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gyqm"]
+radius = 53.000004
+height = 145.99998
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+process_mode = 1
+rotation = 6.28319
+script = ExtResource("1_6spjh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_4gyqm")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4gyqm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-93, 1, 2, -367, 3746, -2046, 4002, 6, 3629, 1959, -7, 311)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(50, 0)
+collide_with_areas = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

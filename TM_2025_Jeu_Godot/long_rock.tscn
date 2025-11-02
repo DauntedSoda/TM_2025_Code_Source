@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgfqgie82usf7"]
+
+[ext_resource type="Texture2D" uid="uid://d4v4m51ay07p" path="res://art/Long_Rock.png" id="1_ovj74"]
+
+[node name="Long_Rock" type="StaticBody2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ovj74")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-159, 344, -69, 473, 80, 456, 185, 329, 129, 175, 147, 15, 193, -84, 175, -208, 169, -349, 56, -435, 34, -492, -165, -446, -200, -377, -184, -236, -203, -137, -64, -63, -11, 88, -80, 179, -160, 329)

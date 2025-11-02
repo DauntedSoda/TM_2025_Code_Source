@@ -1,0 +1,278 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwh6fv756jhl"]
+
+[ext_resource type="Script" uid="uid://ctgf4lgagjbqg" path="res://main.gd" id="1_v1ugg"]
+[ext_resource type="PackedScene" uid="uid://cgtcwac2v25h0" path="res://player.tscn" id="2_0qmt6"]
+[ext_resource type="PackedScene" uid="uid://dic3jr1fbqxkg" path="res://enemy.tscn" id="3_0syjb"]
+[ext_resource type="PackedScene" uid="uid://bmhckwlf25ia4" path="res://bullet.tscn" id="4_20pc6"]
+[ext_resource type="PackedScene" uid="uid://dn8dw1j4kswem" path="res://edge_rock.tscn" id="5_fos0i"]
+[ext_resource type="Texture2D" uid="uid://djmkg1lma52vi" path="res://art/Out_Of_Bounds_Rock.png" id="6_lgr22"]
+[ext_resource type="Texture2D" uid="uid://bhynp4d70xrr0" path="res://art/Touch_Up_Rock.png" id="7_lgr22"]
+[ext_resource type="PackedScene" uid="uid://bgfqgie82usf7" path="res://long_rock.tscn" id="8_trn2v"]
+[ext_resource type="PackedScene" uid="uid://wmays7olscvk" path="res://medium_rock.tscn" id="9_03owx"]
+[ext_resource type="PackedScene" uid="uid://ccw63yt5at471" path="res://triangular_rock.tscn" id="10_wkp8b"]
+
+[sub_resource type="Curve2D" id="Curve2D_jifsn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -411, -455, 0, 0, 0, 0, 2398, -455, 0, 0, 0, 0, 2396, 1703, 0, 0, 0, 0, -399, 1698, 0, 0, 0, 0, -411, -455)
+}
+point_count = 5
+
+[node name="Main" type="Node2D" groups=["main"]]
+process_mode = 3
+script = ExtResource("1_v1ugg")
+mob_scene = ExtResource("3_0syjb")
+
+[node name="Player" parent="." instance=ExtResource("2_0qmt6")]
+position = Vector2(-662, 1082)
+scale = Vector2(1, 1)
+bullet_scene = ExtResource("4_20pc6")
+
+[node name="Enemy" parent="." instance=ExtResource("3_0syjb")]
+rotation = 1.45037
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jifsn")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(-411, -455)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(1239, 654)
+
+[node name="DebugLabel1" type="Label" parent="."]
+visible = false
+offset_left = -839.0
+offset_top = -109.0
+offset_right = -799.0
+offset_bottom = -86.0
+
+[node name="DebugLabel2" type="Label" parent="."]
+visible = false
+offset_left = -831.0
+offset_top = 91.0
+offset_right = -791.0
+offset_bottom = 114.0
+
+[node name="DebugLabelInventory" type="Label" parent="."]
+visible = false
+offset_left = -868.0
+offset_top = 408.0
+offset_right = -794.0
+offset_bottom = 443.0
+
+[node name="SaveDebugLabel" type="Label" parent="."]
+visible = false
+offset_left = -363.0
+offset_top = -579.0
+offset_right = -274.0
+offset_bottom = -543.0
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Obstacles" type="Node" parent="Environment"]
+
+[node name="Long_Rock" parent="Environment/Obstacles" instance=ExtResource("8_trn2v")]
+position = Vector2(-292, 778)
+
+[node name="Long_Rock2" parent="Environment/Obstacles" instance=ExtResource("8_trn2v")]
+position = Vector2(-1726, 312)
+rotation = 2.2968533
+
+[node name="Medium Rock" parent="Environment/Obstacles" instance=ExtResource("9_03owx")]
+position = Vector2(-1164, 1272)
+
+[node name="Medium Rock2" parent="Environment/Obstacles" instance=ExtResource("9_03owx")]
+position = Vector2(-1837.9998, 1052)
+rotation = 0.41887903
+scale = Vector2(0.5, 0.5)
+
+[node name="Triangular_Rock" parent="Environment/Obstacles" instance=ExtResource("10_wkp8b")]
+position = Vector2(-2827, 2033)
+
+[node name="Triangular_Rock2" parent="Environment/Obstacles" instance=ExtResource("10_wkp8b")]
+position = Vector2(-2503, 1538.0001)
+rotation = -2.8379054
+scale = Vector2(0.5, 0.5)
+
+[node name="Long_Rock3" parent="Environment/Obstacles" instance=ExtResource("8_trn2v")]
+position = Vector2(1307.0001, -1004.00006)
+rotation = 0.3839724
+scale = Vector2(2, 2)
+
+[node name="Triangular_Rock3" parent="Environment/Obstacles" instance=ExtResource("10_wkp8b")]
+position = Vector2(296, -2104)
+
+[node name="Medium Rock3" parent="Environment/Obstacles" instance=ExtResource("9_03owx")]
+position = Vector2(1418, -3570)
+rotation = 1.282817
+scale = Vector2(2, 2)
+
+[node name="Edges" type="Node" parent="Environment"]
+
+[node name="Edge_Rock" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+position = Vector2(-2469, 4451)
+
+[node name="Edge_Rock2" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+z_index = -2
+position = Vector2(2520, 4464)
+
+[node name="Edge_Rock3" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+z_index = -2
+position = Vector2(6638, 2538.9998)
+rotation = -0.8779006
+
+[node name="OutOfBoundsRock" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(5263, 4690)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock2" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(106, 4677)
+scale = Vector2(0.328, 1)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock3" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(211, 6627.0005)
+scale = Vector2(23.164, 7.8160005)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock4" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(7683.627, 4350.9453)
+rotation = -0.8779006
+scale = Vector2(18.404016, 6.9657617)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock5" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(8457, 495)
+rotation = -0.8115781
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock6" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(6422, -4291)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock7" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(8792.13, -3153.4468)
+rotation = -1.9600048
+scale = Vector2(13.901562, 6.99568)
+texture = ExtResource("6_lgr22")
+
+[node name="Edge_Rock4" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+position = Vector2(7266, -1749)
+rotation = -1.9600048
+
+[node name="Edge_Rock5" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+position = Vector2(3905, -4822)
+rotation = -2.8379054
+
+[node name="Edge_Rock6" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+position = Vector2(-977.0001, -5363.0005)
+rotation = 3.054326
+
+[node name="OutOfBoundsRock8" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(1466, -5790)
+rotation = -0.19198622
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_lgr22")
+
+[node name="Edge_Rock7" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+position = Vector2(-7134, 3151.0002)
+rotation = 0.5427974
+
+[node name="OutOfBoundsRock9" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-5087, 4639)
+texture = ExtResource("6_lgr22")
+
+[node name="Edge_Rock8" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+z_index = -2
+position = Vector2(-9025, -655.00006)
+rotation = 1.6894788
+
+[node name="OutOfBoundsRock10" type="Sprite2D" parent="Environment/Edges"]
+z_index = -1
+position = Vector2(-9475.001, 2002.9998)
+rotation = -2.7017696
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_lgr22")
+
+[node name="Edge_Rock9" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+position = Vector2(-7300.0005, -5200.0005)
+rotation = 2.1711895
+
+[node name="OutOfBoundsRock11" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-8944, -3263)
+texture = ExtResource("6_lgr22")
+
+[node name="Edge_Rock10" parent="Environment/Edges" instance=ExtResource("5_fos0i")]
+position = Vector2(-5431.0005, -6464)
+rotation = -2.5673792
+
+[node name="OutOfBoundsRock12" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-6321.9995, -6996.999)
+rotation = -2.0280726
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_lgr22")
+
+[node name="TouchUpRock" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-6134, -6799)
+rotation = -2.347468
+scale = Vector2(0.1630276, 0.35746706)
+texture = ExtResource("7_lgr22")
+
+[node name="OutOfBoundsRock13" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-9201.036, -6726.892)
+rotation = 0.6073746
+scale = Vector2(9.099999, 19.423801)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock14" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-3933.176, -8254.556)
+rotation = 0.54105204
+scale = Vector2(9.103534, 8.493008)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock15" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(175.1449, -7470.8403)
+rotation = -0.06981316
+scale = Vector2(15.391406, 7.744278)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock16" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-3571, -5714)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock17" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(5264.81, -6741.4683)
+rotation = 0.33859387
+scale = Vector2(14.495999, 8.338692)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock18" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(10730, -76.000244)
+scale = Vector2(7.1359997, 13.019999)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock19" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-11796.001, -1046.0001)
+rotation = 0.13439035
+scale = Vector2(10.421999, 15.258)
+texture = ExtResource("6_lgr22")
+
+[node name="OutOfBoundsRock20" type="Sprite2D" parent="Environment/Edges"]
+position = Vector2(-9508.001, 4852.0005)
+rotation = 2.0943952
+scale = Vector2(10.0727, 23.898447)
+texture = ExtResource("6_lgr22")
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

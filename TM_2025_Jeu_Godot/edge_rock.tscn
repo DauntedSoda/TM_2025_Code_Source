@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn8dw1j4kswem"]
+
+[ext_resource type="Texture2D" uid="uid://bnc5v67fqmmrq" path="res://art/Edge_Rock.png" id="1_1vf7j"]
+
+[node name="Edge_Rock" type="StaticBody2D"]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1vf7j")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-2497, -138, -2387, -179, -2067, -109, -1804, -99, -1503, -44, -951, -117, -644, -47, -388, -70, -285, -145, -216, -159, 127, -62, 766, -132, 969, -73, 1235, -29, 1576, -149, 1864, -114, 1977, -45, 2277, -141, 2430, -130, 2495, -81, 2515, 239, -2538, 244)

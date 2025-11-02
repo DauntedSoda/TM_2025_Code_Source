@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm8nkwcpf7jrx"]
+
+[ext_resource type="Script" uid="uid://c3ibly3enpwk" path="res://Joystick.gd" id="1_okhdj"]
+[ext_resource type="Texture2D" uid="uid://b0s2j7k076vjy" path="res://prototype_art/AIR_joystick_bg600.png" id="2_do4c5"]
+[ext_resource type="Texture2D" uid="uid://choaa4wbjcf4t" path="res://prototype_art/AIR_joystick_stick600.png" id="3_qf26n"]
+
+[node name="CanvasLayerJoystick" type="CanvasLayer"]
+
+[node name="Joystick" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_okhdj")
+
+[node name="JoystickBase" type="TextureRect" parent="Joystick"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_do4c5")
+expand_mode = 1
+
+[node name="JoystickStick" type="TextureRect" parent="Joystick"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_qf26n")
+expand_mode = 1

@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://q4ymnoih81yp"]
+
+[ext_resource type="Script" uid="uid://kblxx2ht58yp" path="res://pause_menu.gd" id="1_fyqef"]
+[ext_resource type="Texture2D" uid="uid://c561k7d8d4gju" path="res://prototype_art/pause-button.svg" id="1_m6e0p"]
+
+[node name="ui" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pause_icon" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_bottom = 80.0
+grow_horizontal = 0
+texture = ExtResource("1_m6e0p")
+expand_mode = 1
+
+[node name="pause_menu" type="VBoxContainer" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -33.0
+offset_right = 134.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fyqef")
+
+[node name="Resume" type="Button" parent="pause_menu"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Exit" type="Button" parent="pause_menu"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="pause_menu/Resume" to="pause_menu" method="_on_resume_pressed"]
+[connection signal="pressed" from="pause_menu/Exit" to="pause_menu" method="_on_exit_pressed"]
