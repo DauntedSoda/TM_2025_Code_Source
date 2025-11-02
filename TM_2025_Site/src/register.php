@@ -2,7 +2,7 @@
 include "functions.php";
 start_secure_session();
 $csrf_token = generate_csrf_token();
-include "connection.php";
+require_once __DIR__ . '/../private/connection.php';
 
 $error = "";
 $highlight = "";

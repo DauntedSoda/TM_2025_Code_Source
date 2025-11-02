@@ -2,8 +2,7 @@
 include "functions.php";
 start_secure_session();
 header('Content-Type: application/json');
-
-include("connection.php");
+require_once __DIR__ . '/../private/connection.php';
 
 // Check if the user is logged in
 if (!isset($_SESSION['id'])) {

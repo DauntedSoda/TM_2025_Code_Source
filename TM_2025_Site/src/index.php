@@ -1,7 +1,7 @@
 <?php
 include "functions.php";
 start_secure_session();
-include "connection.php";
+require_once __DIR__ . '/../private/connection.php';
 
 $user_data = retrieve_user_data($con);
 $id = $_SESSION['id'];
