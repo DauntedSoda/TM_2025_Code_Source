@@ -1,7 +1,7 @@
 <?php
 include "functions.php";
 start_secure_session();
-require_once("connection.php");
+require_once __DIR__ . '/../private/connection.php';
 
 header("Content-Type: application/json");
 
